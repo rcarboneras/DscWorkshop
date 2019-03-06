@@ -1,5 +1,27 @@
 Configurations:
   - DscTagging
+  - DscLcmUpdateIntervals
+  - DscLcmMaintenanceWindow
 
 DscTagging:
-  Version: 0.2.0
+  Version: 0.3.0
+
+DscLcmMaintenanceWindow:
+  MaintenanceWindow:
+    - Name: MW-1
+      MaintenanceWindowStartTime: 00:30:00
+      MaintenanceWindowTimespan: 02:00:00
+    - Name: MW-2
+      MaintenanceWindowStartTime: 04:00:00
+      MaintenanceWindowTimespan: 01:00:00
+    - Name: MW-3
+      MaintenanceWindowStartTime: 06:00:00
+      MaintenanceWindowTimespan: 01:00:00
+
+DscLcmUpdateIntervals:
+  ConsistencyCheckInterval: 02:00:00
+  ConsistencyCheckIntervalOverride: false
+  RefreshInterval: 04:00:00
+  RefreshIntervalOverride: false
+  ControllerInterval: 00:15:00
+  MaintenanceWindowOverride: false
