@@ -183,7 +183,7 @@ if ($MofCompilationTaskCount -gt 1) {
     CleanBuildOutput,
     SetPsModulePath,
     Download_All_Dependencies,
-    TestConfigData,
+    ConfigDataTest,
     VersionControl,
     LoadDatumConfigData
 }
@@ -192,7 +192,7 @@ else {
         task . Init,
         CleanBuildOutput,
         SetPsModulePath,
-        TestConfigData,
+        ConfigDataTest,
         VersionControl,
         LoadDatumConfigData,
         CompileDatumRsop,
