@@ -248,4 +248,4 @@ Invoke-LabCommand -ActivityName 'Setting the worker service account to local sys
 Restart-LabVM -ComputerName $tfsServer, $tfsWorker -Wait
 
 Write-Host "2. - Creating Snapshot 'AfterCustomizations'" -ForegroundColor Magenta
-Checkpoint-LabVM -All -SnapshotName MWAfterCustomizations
+Checkpoint-LabVM -All -SnapshotName AfterCustomizations
