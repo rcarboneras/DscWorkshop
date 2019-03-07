@@ -26,6 +26,7 @@ $requiredModules = @{
     JeaDsc                       = 'latest'
     XmlContentDsc                = 'latest'
     PowerShellGet                = 'latest'
+    PackageManagement            = 'latest'
 }
 
 if (-not (Test-LabMachineInternetConnectivity -ComputerName $tfsServer)) {
@@ -247,4 +248,4 @@ Invoke-LabCommand -ActivityName 'Setting the worker service account to local sys
 Restart-LabVM -ComputerName $tfsServer, $tfsWorker -Wait
 
 Write-Host "2. - Creating Snapshot 'AfterCustomizations'" -ForegroundColor Magenta
-Checkpoint-LabVM -All -SnapshotName AfterCustomizations
+Checkpoint-LabVM -All -SnapshotName MWAfterCustomizations
