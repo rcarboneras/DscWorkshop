@@ -1,15 +1,20 @@
-Import-Module DscBuildHelpers
+Import-Module -Name DscBuildHelpers
 $Error.Clear()
 Write-Host ------------------------------------------------------------
+Write-Host 'Currently loaded modules:'
 $env:PSModulePath -split ';' | Write-Host
 Write-Host ------------------------------------------------------------
+Write-Host "The 'CommonTasks' module provides the following configurations (DSC Composte Resources)"
 Get-DscResource -Module CommonTasks | Out-String | Write-Host
 Write-Host ------------------------------------------------------------
 
-if (-not ($buildVersion = $env:BHBuildVersion)) {
+$buildVersion = $env:BHBuildVersion
+if (-not $buildVersion) {
     $buildVersion = '0.0.0'
 }
-if (-not ($environment = $node.Environment)) {
+
+$environment = $node.Environment
+if (-not $environment ){
     $environment = 'NA'
 }
 
@@ -52,16 +57,16 @@ configuration "RootConfiguration"
             }
 
             if($dscError.Count -gt 0) {
-                $warningMessage = "    $($Node.Name) : $($Node.Role) ::> $_ "
-                $n = [System.Math]::Max(1, 120 - $warningMessage.Length)
+                $warningMessage = "    $($Node.Name) : $($Node.Role) ::> $configurationName "
+                $n = [System.Math]::Max(1, 100 - $warningMessage.Length)
                 Write-Host "$warningMessage$('.' * $n)FAILED" -ForeGroundColor Yellow
                 $dscError.Foreach{
                     Write-Host "`t$message" -ForeGroundColor Yellow
                 }
             }
             else {
-                $okMessage = "    $($Node.Name) : $($Node.Role) ::> $_ "
-                $n = [System.Math]::Max(1, 120 - $okMessage.Length)
+                $okMessage = "    $($Node.Name) : $($Node.Role) ::> $configurationName "
+                $n = [System.Math]::Max(1, 100 - $okMessage.Length)
                 Write-Host "$okMessage$('.' * $n)OK" -ForeGroundColor Green
             }
             $lastCount = $Error.Count
