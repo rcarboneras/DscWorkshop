@@ -1,6 +1,6 @@
 Configurations:
   - DscTagging
-  - DscLcmUpdateIntervals
+  - DscLcmController
   - DscLcmMaintenanceWindow
 
 DscTagging:
@@ -18,7 +18,7 @@ DscLcmMaintenanceWindow:
       MaintenanceWindowStartTime: 06:00:00
       MaintenanceWindowTimespan: 01:00:00
 
-DscLcmUpdateIntervals:
+DscLcmController:
   ConsistencyCheckInterval: 02:00:00
   ConsistencyCheckIntervalOverride: false
   RefreshInterval: 04:00:00
